@@ -2,7 +2,6 @@ package com.idk.game;
 
 import com.idk.game.graphics.Screen;
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -15,7 +14,7 @@ public class Game extends Canvas implements Runnable
     private static final long serialVersionUID = 1l;
     
     public static int width = 300;
-    public static int height = width / 16 * 9;
+    public static int height =  width / 16 * 9;
     public static int scale = 3;
     
     private Thread thread;
@@ -62,11 +61,28 @@ public class Game extends Canvas implements Runnable
     @Override
     public void run()
     {
+        long lastTime = System.nanoTime();
+        final double ns = 1000000000.0 / 60.0;
+        double delta = 0;
+        
+        // Game loop
         while( running )
         {
-            update();
+            long now = System.nanoTime();
+            delta += ( now - lastTime ) / ns;
+            
+            lastTime = now;
+            
+            while ( delta >= 1 )
+            {
+                update();
+                delta--;
+            }
+            
             render();
         }
+        
+        stop();
     }
     
     public void update()
@@ -83,10 +99,16 @@ public class Game extends Canvas implements Runnable
             return;
         }
         
-        Graphics g = bs.getDrawGraphics();
-        g.setColor( Color.BLACK );
-        g.fillRect( 0, 0, getWidth(), getHeight() );
+        screen.clear();
+        screen.render();
         
+        for( int i = 0; i < pixels.length; i++ )
+        {
+            pixels[i] = screen.pixels[i];
+        }
+        
+        Graphics g = bs.getDrawGraphics();
+        g.drawImage( image,  0,  0, getWidth(), getHeight(), null );
         g.dispose();
         
         bs.show();
