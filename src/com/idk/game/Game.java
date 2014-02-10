@@ -16,6 +16,7 @@ public class Game extends Canvas implements Runnable
     public static int width = 300;
     public static int height =  width / 16 * 9;
     public static int scale = 3;
+    public static String title = "Game";
     
     private Thread thread;
     private JFrame frame;
@@ -65,6 +66,11 @@ public class Game extends Canvas implements Runnable
         final double ns = 1000000000.0 / 60.0;
         double delta = 0;
         
+        long timer = System.currentTimeMillis();
+        
+        int frames = 0;
+        int updates = 0;
+        
         // Game loop
         while( running )
         {
@@ -76,10 +82,21 @@ public class Game extends Canvas implements Runnable
             while ( delta >= 1 )
             {
                 update();
+                updates++;
                 delta--;
             }
             
             render();
+            frames++;
+            
+            if( System.currentTimeMillis() - timer > 1000 )
+            {
+                timer += 1000;
+                System.out.println( updates + " ups, " + frames + " fps" );
+                frame.setTitle( title + " | " + updates + "ups, " + frames + " fps" );
+                updates = 0;
+                frames = 0;
+            }
         }
         
         stop();
@@ -118,7 +135,7 @@ public class Game extends Canvas implements Runnable
     {
         Game game = new Game();
         game.frame.setResizable( false );
-        game.frame.setTitle( "PewPew" );
+        game.frame.setTitle( Game.title );
         game.frame.add( game );
         game.frame.pack();
         game.frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
