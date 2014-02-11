@@ -1,6 +1,7 @@
 package com.idk.game;
 
 import com.idk.game.graphics.Screen;
+import com.idk.game.input.Keyboard;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -20,6 +21,7 @@ public class Game extends Canvas implements Runnable
     
     private Thread thread;
     private JFrame frame;
+    private Keyboard key;
     private boolean running = false;
     
     private Screen screen;
@@ -33,8 +35,10 @@ public class Game extends Canvas implements Runnable
         setPreferredSize( size );
         
         screen = new Screen( width, height );
-        
         frame = new JFrame();
+        key = new Keyboard();
+        
+        addKeyListener( key );
     }
     
     public synchronized void start()
@@ -107,8 +111,9 @@ public class Game extends Canvas implements Runnable
     
     public void update()
     {
+        key.update();
         x++;
-        // y++;
+        y++;
     }
     
     public void render()

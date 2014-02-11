@@ -2,7 +2,6 @@ package com.idk.game.graphics;
 
 import java.util.Random;
 
-
 public class Screen
 {
     private int width;
