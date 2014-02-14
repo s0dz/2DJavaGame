@@ -10,6 +10,8 @@ public class SpriteSheet
     public final int SIZE;
     public int[] pixels;
     
+    public static SpriteSheet tiles = new SpriteSheet( "/textures/spritesheet.png", 256 ); 
+    
     public SpriteSheet( String path, int size )
     {
         this.path = path;
@@ -22,7 +24,7 @@ public class SpriteSheet
     {
         try
         {
-            BufferedImage image = ImageIO.read(  SpriteSheet.class.getResource( path ) );
+            BufferedImage image = ImageIO.read( SpriteSheet.class.getResource( path ) );
         
             int w = image.getWidth();
             int h = image.getHeight();
