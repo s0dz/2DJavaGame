@@ -75,6 +75,9 @@ public class Game extends Canvas implements Runnable
         int frames = 0;
         int updates = 0;
         
+        // Input focus
+        requestFocus();
+        
         // Game loop
         while( running )
         {
