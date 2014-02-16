@@ -9,6 +9,8 @@ public class Tile
     public int y;
     public Sprite sprite;
     
+    public static Tile grass = new GrassTile( Sprite.grass );
+    
     public Tile( Sprite sprite )
     {
         this.sprite = sprite;
@@ -19,6 +21,7 @@ public class Tile
         
     }
     
+    // Only needs overridden for collidable tiles
     public boolean solid()
     {
         return false;
