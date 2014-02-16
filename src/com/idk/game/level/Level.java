@@ -4,10 +4,11 @@ import com.idk.game.graphics.Screen;
 
 public class Level
 {
-    private int width;
-    private int height;
-    private int[] tiles;
+    protected int width;
+    protected int height;
+    protected int[] tiles;
     
+    // This constructor randomly generates a level.
     public Level( int width, int height )
     {
         this.width = width;
@@ -16,12 +17,13 @@ public class Level
         generateLevel();
     }
 
+    // This constructor loads a level from file.
     public Level( String path )
     {
         loadLevel( path );
     }
     
-    private void generateLevel()
+    protected void generateLevel()
     {
         
     }
