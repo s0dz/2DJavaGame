@@ -1,15 +1,19 @@
 package com.idk.game.graphics;
 
+import com.idk.game.level.tile.Tile;
 import java.util.Random;
 
 public class Screen
 {
-    private int width;
-    private int height;
+    public int width;
+    public int height;
     public int[] pixels;
     
     public final int MAP_SIZE = 64;
     public final int MAP_SIZE_MASK = MAP_SIZE - 1;
+    
+    public int xOffset;
+    public int yOffset;
     
     public int[] tiles = new int[ MAP_SIZE * MAP_SIZE ];
     
@@ -38,22 +42,34 @@ public class Screen
         }
     }
     
-    public void render( int xOffSet, int yOffSet )
-    {   
-        for( int y = 0; y < height; y++ )
+    public void renderTile( int xp, int yp, Tile tile )
+    {
+        // Adjust for offset (when player moves)
+        xp -= xOffset;
+        yp -= yOffset;
+        
+        for( int y = 0; y < tile.sprite.SIZE; y++ )
         {
-            int yp = y + yOffSet;
+            // Absalute y position (y position of sprite + offset)
+            int ya = y + yp;
             
-            if( yp < 0 || yp >= height ) continue;
-            
-            for( int x = 0; x < width; x++ )
+            for( int x = 0; x < tile.sprite.SIZE; x++ )
             {
-                int xp = x + xOffSet;
+                // Absalute x position (x position of sprite + offset)
+                int xa = x + xp;
                 
-                if( xp < 0 || xp >= width ) continue;
+                // Don't render what can't be seen in the screen's dimensions
+                if( xa < 0 || xa >= width || ya < 0 || ya >= height ) break;
                 
-                pixels[ xp + yp * width ] = Sprite.grass.pixels[ ( x & 15 ) + ( y & 15) * Sprite.grass.SIZE ];
+                // Store the sprite's pixels into 
+                pixels[ xa + ya * width ] = tile.sprite.pixels[ x + y * tile.sprite.SIZE ];
             }
         }
+    }
+    
+    public void setOffset( int xOffset, int yOffset )
+    {
+        this.xOffset = xOffset;
+        this.yOffset = yOffset;
     }
 }

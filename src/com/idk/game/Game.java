@@ -2,6 +2,8 @@ package com.idk.game;
 
 import com.idk.game.graphics.Screen;
 import com.idk.game.input.Keyboard;
+import com.idk.game.level.Level;
+import com.idk.game.level.RandomLevel;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -22,6 +24,7 @@ public class Game extends Canvas implements Runnable
     private Thread thread;
     private JFrame frame;
     private Keyboard key;
+    private Level level;
     private boolean running = false;
     
     private Screen screen;
@@ -37,6 +40,7 @@ public class Game extends Canvas implements Runnable
         screen = new Screen( width, height );
         frame = new JFrame();
         key = new Keyboard();
+        level = new RandomLevel( 64, 64 ); // 64x64 tiles in size
         
         addKeyListener( key );
     }
@@ -132,7 +136,7 @@ public class Game extends Canvas implements Runnable
         }
         
         screen.clear();
-        screen.render( x, y );
+        level.render( x, y, screen );
         
         for( int i = 0; i < pixels.length; i++ )
         {
