@@ -59,9 +59,13 @@ public class Screen
                 int xa = x + xp;
                 
                 // Don't render what can't be seen in the screen's dimensions
-                if( xa < 0 || xa >= width || ya < 0 || ya >= height ) break;
+                // (slight padding to allow smooth procedural tile rendering at boundaries)
+                if( xa < -tile.sprite.SIZE || xa >= width || ya < 0 || ya >= height ) break;
                 
-                // Store the sprite's pixels into 
+                // Keep the array index from going out of bounds.
+                if( xa < 0 ) xa = 0;
+                
+                // Store the sprite's pixels into this screen's pixels
                 pixels[ xa + ya * width ] = tile.sprite.pixels[ x + y * tile.sprite.SIZE ];
             }
         }

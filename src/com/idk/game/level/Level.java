@@ -60,12 +60,12 @@ public class Level
         // The left most and right most vertical lines converted from pixel
         // precision to tile precision.
         int x0 = xScroll >> 4;
-        int x1 = ( xScroll + screen.width ) >> 4;
+        int x1 = ( xScroll + screen.width + 16 ) >> 4; // Pad right side of screen
         
         // The top most and bottom most horizontal lines converted from pixel
         // precision to tile precision.
         int y0 = yScroll >> 4;
-        int y1 = ( yScroll + screen.height ) >> 4;
+        int y1 = ( yScroll + screen.height + 16 ) >> 4; // Pad bottom of screen
         
         // Using tile precision, render each tile
         for( int y = y0; y < y1; y++ )
