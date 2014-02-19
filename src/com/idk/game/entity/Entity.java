@@ -8,9 +8,11 @@ public abstract class Entity
 {
     public int x;
     public int y;
-    private boolean removed = false;
+    
     protected Level level;
     protected final Random random = new Random();
+    
+    private boolean removed = false;
     
     public void update()
     {
