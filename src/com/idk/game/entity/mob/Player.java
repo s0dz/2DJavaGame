@@ -41,13 +41,19 @@ public class Player extends Mob
     @Override
     public void render( Screen screen )
     {        
+        int flip = 0;
+        
         // Load correct direcitonal sprite
-        if ( dir == 0 ) sprite = Sprite.player_up;
-        if ( dir == 1 ) sprite = Sprite.player_right;
+        if ( dir == 0 ) sprite = Sprite.player_up;        
+        if ( dir == 1 ) sprite = Sprite.player_side;
         if ( dir == 2 ) sprite = Sprite.player_down;
-        if ( dir == 3 ) sprite = Sprite.player_left;
+        if ( dir == 3 )
+        {
+            sprite = Sprite.player_side;
+            flip = 1;
+        }
         
         // Render sprite for player with offset to center
-        screen.renderPlayer( x - 16, y - 16, sprite  );
+        screen.renderPlayer( x - 16, y - 16, sprite, flip );
     }
 }

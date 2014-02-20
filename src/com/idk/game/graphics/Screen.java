@@ -71,7 +71,7 @@ public class Screen
         }
     }
     
-    public void renderPlayer( int xp, int yp, Sprite sprite )
+    public void renderPlayer( int xp, int yp, Sprite sprite, int flip )
     {
         // Adjust for offset (when player moves)
         xp -= xOffset;
@@ -82,10 +82,18 @@ public class Screen
             // Absalute y position (y position of sprite + offset)
             int ya = y + yp;
             
+            // Sprite Y flip?
+            int ys = y;
+            if ( flip == 2 || flip == 3 ) ys = 31 - y;
+            
             for( int x = 0; x < 32; x++ )
             {
                 // Absalute x position (x position of sprite + offset)
                 int xa = x + xp;
+                
+                // Sprite X flip?
+                int xs = x;
+                if ( flip == 1 || flip == 3 ) xs = 31 - x;
                 
                 // Don't render what can't be seen in the screen's dimensions
                 // (slight padding to allow smooth procedural tile rendering at boundaries)
@@ -94,12 +102,12 @@ public class Screen
                 // Keep the array index from going out of bounds.
                 if( xa < 0 ) xa = 0;
                 
-                int col = sprite.pixels[ x + y * 32 ];
-                
-                if( col != 0xffff00ff )
+                // Check for pink (0xffff00ff). This color indicates transparency.
+                int color = sprite.pixels[ xs + ys * 32 ];               
+                if( color != 0xffff00ff )
                 {
                     // Store the sprite's pixels into this screen's pixels
-                    pixels[ xa + ya * width ] = col;
+                    pixels[ xa + ya * width ] = color;
                 }
             }
         }

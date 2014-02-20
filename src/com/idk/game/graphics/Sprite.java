@@ -13,10 +13,9 @@ public class Sprite
     // The 5 is actually a 10 when counting on spritesheet.
     // This is because the Player sprite sheet dimension are twice as large.
     public static Sprite player_up = new Sprite( 32, 0, 5, SpriteSheet.tiles );
+     public static Sprite player_side = new Sprite( 32, 1, 5, SpriteSheet.tiles );
     public static Sprite player_down = new Sprite( 32, 2, 5, SpriteSheet.tiles );
-    public static Sprite player_left = new Sprite( 32, 3, 5, SpriteSheet.tiles );
-    public static Sprite player_right = new Sprite( 32, 1, 5, SpriteSheet.tiles );
-    
+       
     
     public Sprite( int size, int x, int y, SpriteSheet sheet )
     {
