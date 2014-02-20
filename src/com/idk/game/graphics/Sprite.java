@@ -10,12 +10,13 @@ public class Sprite
     public static Sprite grass = new Sprite( 16, 0, 0, SpriteSheet.tiles );
     public static Sprite voidSprite = new Sprite( 16, 0 ); // Black sprite
     
+    // The 5 is actually a 10 when counting on spritesheet.
+    // This is because the Player sprite sheet dimension are twice as large.
+    public static Sprite player_up = new Sprite( 32, 0, 5, SpriteSheet.tiles );
+    public static Sprite player_down = new Sprite( 32, 2, 5, SpriteSheet.tiles );
+    public static Sprite player_left = new Sprite( 32, 3, 5, SpriteSheet.tiles );
+    public static Sprite player_right = new Sprite( 32, 1, 5, SpriteSheet.tiles );
     
-    // Player is 32x32 which is 4 Tile sizes
-    public static Sprite player0 = new Sprite( 16, 0, 10, SpriteSheet.tiles );
-    public static Sprite player1 = new Sprite( 16, 1, 10, SpriteSheet.tiles );
-    public static Sprite player2 = new Sprite( 16, 0, 11, SpriteSheet.tiles );
-    public static Sprite player3 = new Sprite( 16, 1, 11, SpriteSheet.tiles );
     
     public Sprite( int size, int x, int y, SpriteSheet sheet )
     {

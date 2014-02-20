@@ -77,24 +77,24 @@ public class Screen
         xp -= xOffset;
         yp -= yOffset;
         
-        for( int y = 0; y < 16; y++ )
+        for( int y = 0; y < 32; y++ )
         {
             // Absalute y position (y position of sprite + offset)
             int ya = y + yp;
             
-            for( int x = 0; x < 16; x++ )
+            for( int x = 0; x < 32; x++ )
             {
                 // Absalute x position (x position of sprite + offset)
                 int xa = x + xp;
                 
                 // Don't render what can't be seen in the screen's dimensions
                 // (slight padding to allow smooth procedural tile rendering at boundaries)
-                if( xa < -16 || xa >= width || ya < 0 || ya >= height ) break;
+                if( xa < -32 || xa >= width || ya < 0 || ya >= height ) break;
                 
                 // Keep the array index from going out of bounds.
                 if( xa < 0 ) xa = 0;
                 
-                int col = sprite.pixels[ x + y * 16 ];
+                int col = sprite.pixels[ x + y * 32 ];
                 
                 if( col != 0xffff00ff )
                 {
