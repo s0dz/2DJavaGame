@@ -134,6 +134,8 @@ public class Game extends Canvas implements Runnable
         }
         
         screen.clear();
+        
+        // Centered on player coords.
         level.render( player.x, player.y, screen );
         
         for( int i = 0; i < pixels.length; i++ )
