@@ -71,6 +71,40 @@ public class Screen
         }
     }
     
+    public void renderPlayer( int xp, int yp, Sprite sprite )
+    {
+        // Adjust for offset (when player moves)
+        xp -= xOffset;
+        yp -= yOffset;
+        
+        for( int y = 0; y < 16; y++ )
+        {
+            // Absalute y position (y position of sprite + offset)
+            int ya = y + yp;
+            
+            for( int x = 0; x < 16; x++ )
+            {
+                // Absalute x position (x position of sprite + offset)
+                int xa = x + xp;
+                
+                // Don't render what can't be seen in the screen's dimensions
+                // (slight padding to allow smooth procedural tile rendering at boundaries)
+                if( xa < -16 || xa >= width || ya < 0 || ya >= height ) break;
+                
+                // Keep the array index from going out of bounds.
+                if( xa < 0 ) xa = 0;
+                
+                int col = sprite.pixels[ x + y * 16 ];
+                
+                if( col != 0xffff00ff )
+                {
+                    // Store the sprite's pixels into this screen's pixels
+                    pixels[ xa + ya * width ] = col;
+                }
+            }
+        }
+    }
+    
     public void setOffset( int xOffset, int yOffset )
     {
         this.xOffset = xOffset;

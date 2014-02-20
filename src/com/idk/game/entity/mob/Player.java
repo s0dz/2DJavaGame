@@ -1,5 +1,7 @@
 package com.idk.game.entity.mob;
 
+import com.idk.game.graphics.Screen;
+import com.idk.game.graphics.Sprite;
 import com.idk.game.input.Keyboard;
 
 public class Player extends Mob
@@ -35,8 +37,16 @@ public class Player extends Mob
     }
     
     @Override
-    public void render()
+    public void render( Screen screen )
     {
+        // To center the 32x32 sprite
+        int xx = x - 16;
+        int yy = y - 16;
         
+        // Render each quadrant of the sprite
+        screen.renderPlayer( xx, yy, Sprite.player0 );
+        screen.renderPlayer( xx + 16, yy, Sprite.player1 );
+        screen.renderPlayer( xx, yy + 16, Sprite.player2 );
+        screen.renderPlayer( xx + 16, yy + 16, Sprite.player3 );
     }
 }
