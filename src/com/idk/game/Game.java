@@ -4,7 +4,7 @@ import com.idk.game.entity.mob.Player;
 import com.idk.game.graphics.Screen;
 import com.idk.game.input.Keyboard;
 import com.idk.game.level.Level;
-import com.idk.game.level.RandomLevel;
+import com.idk.game.level.SpawnLevel;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -44,7 +44,8 @@ public class Game extends Canvas implements Runnable
         screen = new Screen( width, height );
         frame = new JFrame();
         key = new Keyboard();
-        level = new RandomLevel( 64, 64 ); // 64x64 tiles in size
+        // level = new RandomLevel( 64, 64 ); // 64x64 tiles in size
+        level = new SpawnLevel( "/textures/level.png" );
         player = new Player( key );
         
         addKeyListener( key );
