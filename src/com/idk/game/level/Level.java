@@ -8,8 +8,9 @@ public class Level
     protected int width;
     protected int height;
     
-    protected Tile[] tiles;
     protected int[] tilesInt;
+    
+    protected int[] tiles;
     
     // This constructor randomly generates a level.
     public Level( int width, int height )
@@ -75,28 +76,24 @@ public class Level
         {
             for( int x = x0; x < x1; x++ )
             {
-                // getTile( x, y ).render( x, y, screen );
-                
-                // Map out of bounds
-                if( x + y * 16 < 0 || x + y * 16 >= 256 )
-                {
-                    Tile.voidTile.render( x, y, screen );
-                    continue;
-                }
-                
-                tiles[ x + y * 16 ].render( x, y, screen );
+                getTile( x, y ).render( x, y, screen );
             }
         }
     }
     
+    // Grass = 0xff00FF00
+    // Flower = 0xffFFFF00
+    // Rock = 0xff7F7F00
+    //
+    // ( alpha channel = ff == 100% opaque )
     public Tile getTile( int x, int y )
     {
         // Map out of bounds
         if( x < 0 || y < 0 || x >= width || y >= height ) return Tile.voidTile;
         
-        if( tilesInt[ x + y * width ] == 0 ) return Tile.grass;
-        if( tilesInt[ x + y * width ] == 1 ) return Tile.flower;
-        if( tilesInt[ x + y * width ] == 2 ) return Tile.rock;
+        if( tiles[ x + y * width ] == 0xff00FF00 ) return Tile.grass;
+        if( tiles[ x + y * width ] == 0xffFFFF00 ) return Tile.flower;
+        if( tiles[ x + y * width ] == 0xff7F7F00 ) return Tile.rock;
         
         return Tile.voidTile;
     }

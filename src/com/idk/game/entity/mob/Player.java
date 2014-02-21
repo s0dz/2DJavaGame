@@ -17,6 +17,7 @@ public class Player extends Mob
         sprite = Sprite.player_up;
     }
     
+    // Sets a spawn location
     public Player( int x, int y, Keyboard input )
     {
         this.x = x;

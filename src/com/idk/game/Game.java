@@ -46,7 +46,7 @@ public class Game extends Canvas implements Runnable
         key = new Keyboard();
         // level = new RandomLevel( 64, 64 ); // 64x64 tiles in size
         level = new SpawnLevel( "/textures/level.png" );
-        player = new Player( key );
+        player = new Player( 6 * 16, 4 * 16, key );
         
         addKeyListener( key );
     }
