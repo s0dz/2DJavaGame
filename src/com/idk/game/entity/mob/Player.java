@@ -14,7 +14,7 @@ public class Player extends Mob
     public Player( Keyboard input )
     {
         this.input = input;
-        sprite = Sprite.player_up;
+        sprite = Sprite.player_up; // Since dir is initialized at 0, not a big deal
     }
     
     // Sets a spawn location
@@ -23,6 +23,7 @@ public class Player extends Mob
         this.x = x;
         this.y = y;
         this.input = input;
+        sprite = Sprite.player_up; // Since dir is initialized at 0, not a big deal
     }
     
     @Override
