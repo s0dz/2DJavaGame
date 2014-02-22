@@ -45,7 +45,7 @@ public class Game extends Canvas implements Runnable
         frame = new JFrame();
         key = new Keyboard();
         // level = new RandomLevel( 64, 64 ); // 64x64 tiles in size
-        level = new SpawnLevel( "/textures/levels/level.png" );
+        level = Level.spawn;
         player = new Player( 6 * 16, 4 * 16, key );
         
         addKeyListener( key );
