@@ -55,7 +55,7 @@ public abstract class Mob extends Entity
         for( int c = 0; c < 4; c++ )
         {
             // This maths if for finding the collision sweet spot
-            int xt = ( (x + xChange ) + c % 2 * 12 - 7 ) / 16;
+            int xt = ( (x + xChange ) + c % 2 * 14 - 8 ) / 16;
             int yt = ( (y + yChange ) + c / 2 * 12 + 3 ) / 16;  
             
             if( level.getTile( xt, yt ).solid() ) solid = true;

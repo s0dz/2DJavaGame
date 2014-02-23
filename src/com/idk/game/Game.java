@@ -3,8 +3,8 @@ package com.idk.game;
 import com.idk.game.entity.mob.Player;
 import com.idk.game.graphics.Screen;
 import com.idk.game.input.Keyboard;
+import com.idk.game.input.Mouse;
 import com.idk.game.level.Level;
-import com.idk.game.level.SpawnLevel;
 import com.idk.game.level.TileCoordinate;
 import java.awt.Canvas;
 import java.awt.Color;
@@ -52,7 +52,10 @@ public class Game extends Canvas implements Runnable
         player = new Player( playerSpawn.x(), playerSpawn.y(), key );
         player.init( level );
         
+        Mouse mouse = new Mouse();
         addKeyListener( key );
+        addMouseListener( mouse );
+        addMouseMotionListener( mouse );
     }
     
     public synchronized void start()
@@ -156,6 +159,8 @@ public class Game extends Canvas implements Runnable
         g.setColor( Color.WHITE );
         g.setFont(  new Font( "Verdana", 0, 50 ) );
         // g.drawString( "X: " + player.x + ", Y:" + player.y, 350, 300 );
+        g.fillRect( Mouse.getX() -32, Mouse.getY() - 32, 64, 64 );
+        if( Mouse.getButton() != -1 ) g.drawString( "Button: " + Mouse.getButton(), 80, 80 );
         g.dispose();
         
         bs.show();
