@@ -51,7 +51,15 @@ public abstract class Mob extends Entity
     {
         boolean solid = false;
         
-        if( level.getTile( ( x + xChange ) / 16, ( y + yChange ) /16 ).solid() ) solid = true;
+        // Check all 4 corners of the tile
+        for( int c = 0; c < 4; c++ )
+        {
+            // This maths if for finding the collision sweet spot
+            int xt = ( (x + xChange ) + c % 2 * 12 - 7 ) / 16;
+            int yt = ( (y + yChange ) + c / 2 * 12 + 3 ) / 16;  
+            
+            if( level.getTile( xt, yt ).solid() ) solid = true;
+        }
         
         return solid;
     }
