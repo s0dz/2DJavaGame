@@ -5,6 +5,7 @@ import com.idk.game.graphics.Screen;
 import com.idk.game.input.Keyboard;
 import com.idk.game.level.Level;
 import com.idk.game.level.SpawnLevel;
+import com.idk.game.level.TileCoordinate;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -46,7 +47,9 @@ public class Game extends Canvas implements Runnable
         key = new Keyboard();
         // level = new RandomLevel( 64, 64 ); // 64x64 tiles in size
         level = Level.spawn;
-        player = new Player( 6 * 16, 4 * 16, key );
+        
+        TileCoordinate playerSpawn = new TileCoordinate( 16, 62 );
+        player = new Player( playerSpawn.x(), playerSpawn.y(), key );
         
         addKeyListener( key );
     }
