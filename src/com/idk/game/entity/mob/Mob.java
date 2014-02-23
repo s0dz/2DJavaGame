@@ -63,4 +63,9 @@ public abstract class Mob extends Entity
         
         return solid;
     }
+    
+    protected void shoot( int x, int y, double dir )
+    {
+        System.out.println( " Dir: " + dir );
+    }
 }

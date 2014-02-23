@@ -3,6 +3,7 @@ package com.idk.game.entity.mob;
 import com.idk.game.graphics.Screen;
 import com.idk.game.graphics.Sprite;
 import com.idk.game.input.Keyboard;
+import com.idk.game.input.Mouse;
 
 public class Player extends Mob
 {
@@ -51,6 +52,23 @@ public class Player extends Mob
         else
         {
             walking = false;
+        }
+        
+        updateShooting();
+    }
+    
+    private void updateShooting()
+    {
+        if( Mouse.getButton() == 1 )
+        {
+            // Distance from mouse coords to center of screen
+            double dx = Mouse.getX() - 300 / 2; //TODO:
+            double dy = Mouse.getY() - 168 / 2; // Get rid of magic numbers!
+            
+            // This will calculate the angle
+            double dir = Math.atan2( dy, dx );
+            
+            shoot( x, y, dir );
         }
     }
     
