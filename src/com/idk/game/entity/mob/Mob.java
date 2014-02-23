@@ -11,6 +11,15 @@ public abstract class Mob extends Entity
     
     public void move( int xChange, int yChange )
     {
+        // This technique allows sliding
+        if( xChange != 0 && yChange != 0 )
+        {
+            move( xChange, 0 );
+            move( 0, yChange );
+            
+            return;
+        }
+        
         //         0
         //      3     1
         //         2
