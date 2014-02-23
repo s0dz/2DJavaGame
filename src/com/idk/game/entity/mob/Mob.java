@@ -20,7 +20,7 @@ public abstract class Mob extends Entity
         if( yChange < 0 ) dir = 0;
         
         // Move if not in a collision
-        if( !collision() )
+        if( !collision( xChange, yChange ) )
         {
             x += xChange;
             y += yChange;
@@ -38,8 +38,12 @@ public abstract class Mob extends Entity
         
     }
     
-    private boolean collision()
+    private boolean collision( int xChange, int yChange )
     {
-        return false;
+        boolean solid = false;
+        
+        if( level.getTile( ( x + xChange ) / 16, ( y + yChange ) /16 ).solid() ) solid = true;
+        
+        return solid;
     }
 }
