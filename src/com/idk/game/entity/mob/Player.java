@@ -1,5 +1,6 @@
 package com.idk.game.entity.mob;
 
+import com.idk.game.Game;
 import com.idk.game.graphics.Screen;
 import com.idk.game.graphics.Sprite;
 import com.idk.game.input.Keyboard;
@@ -62,11 +63,11 @@ public class Player extends Mob
         if( Mouse.getButton() == 1 )
         {
             // Distance from mouse coords to center of screen
-            double dx = Mouse.getX() - 300 / 2; //TODO:
-            double dy = Mouse.getY() - 168 / 2; // Get rid of magic numbers!
+            double dx = Mouse.getX() - Game.getWindowWidth() / 2;
+            double dy = Mouse.getY() - Game.getWindowHeight() / 2;
             
             // This will calculate the angle
-            double dir = Math.atan2( dy, dx );
+            double dir = Math.atan2( dy, dx ); // atan2 handles dividing by zero
             
             shoot( x, y, dir );
         }
