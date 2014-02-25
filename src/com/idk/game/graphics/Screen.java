@@ -42,6 +42,7 @@ public class Screen
         }
     }
     
+    // TODO: Possibly refactor to use Sprite instead of Tile
     public void renderTile( int xp, int yp, Tile tile )
     {
         // Adjust for offset (when player moves)

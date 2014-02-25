@@ -1,13 +1,20 @@
 package com.idk.game.entity.mob;
 
 import com.idk.game.entity.Entity;
+import com.idk.game.entity.projectile.Projectile;
+import com.idk.game.entity.projectile.TestProjectile;
 import com.idk.game.graphics.Sprite;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Mob extends Entity
 {
     protected Sprite sprite;
     protected int dir = 0;
     protected boolean moving = false;
+    // TODO: protected boolean walking = false;
+    
+    protected List<Projectile> projectiles = new ArrayList<>();
     
     public void move( int xChange, int yChange )
     {
@@ -66,7 +73,9 @@ public abstract class Mob extends Entity
     
     protected void shoot( int x, int y, double dir )
     {
-        // dir = Math.toDegrees( dir ); // or = dir * ( 180 / Math.PI )
-        System.out.println( " Dir: " + dir );
+        // dir = Math.toDegrees( dir ); // or dir *= 180 / Math.PI // <= lol... doesn't work too well 
+        Projectile p = new TestProjectile( x, y, dir ); // Probably should be double for precision
+        projectiles.add( p );
+        level.add( p );
     }
 }

@@ -1,7 +1,10 @@
 package com.idk.game.level;
 
+import com.idk.game.entity.Entity;
 import com.idk.game.graphics.Screen;
 import com.idk.game.level.tile.Tile;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Level
 {
@@ -11,6 +14,10 @@ public class Level
     protected int[] tilesInt;
     
     protected int[] tiles;
+    
+    //TODO: tile_size
+    
+    private List<Entity> entities = new ArrayList<>();
     
     public static Level spawn = new SpawnLevel( "/levels/spawn.png" );
     
@@ -42,7 +49,10 @@ public class Level
             
     public void update()
     {
-        
+        for( int i = 0; i < entities.size(); i++ )
+        {
+            entities.get(i).update();
+        }
     }
     
     private void time()
@@ -81,6 +91,16 @@ public class Level
                 getTile( x, y ).render( x, y, screen );
             }
         }
+        
+        for( int i = 0; i < entities.size(); i++ )
+        {
+            entities.get(i).render( screen );
+        }
+    }
+    
+    public void add( Entity e )
+    {
+        entities.add( e );
     }
     
     // Grass = 0xff00FF00
