@@ -14,7 +14,7 @@ public class TestProjectile extends Projectile
         damage = 20;
         rateOfFire = 15;
         
-        sprite = Sprite.grass;
+        sprite = Sprite.projectile_test;
         
         xNext = speed * Math.cos( angle );
         yNext = speed * Math.sin( angle );
@@ -35,6 +35,6 @@ public class TestProjectile extends Projectile
     @Override
     public void render( Screen screen )
     {
-        screen.renderTile( x, y, Tile.grass );
+        screen.renderProjectile( x, y, this );
     }
 }

@@ -37,6 +37,9 @@ public class Sprite
     public static Sprite player_down_1 = new Sprite( 32, 2, 6, SpriteSheet.tiles );
     public static Sprite player_down_2 = new Sprite( 32, 2, 7, SpriteSheet.tiles );
         
+    // Projectiles
+    public static Sprite projectile_test = new Sprite( 16, 0, 0, SpriteSheet.projectile_test );
+    
     public Sprite( int size, int x, int y, SpriteSheet sheet )
     {
         SIZE = size;

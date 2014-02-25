@@ -1,5 +1,6 @@
 package com.idk.game.graphics;
 
+import com.idk.game.entity.projectile.Projectile;
 import com.idk.game.level.tile.Tile;
 import java.util.Random;
 
@@ -42,7 +43,6 @@ public class Screen
         }
     }
     
-    // TODO: Possibly refactor to use Sprite instead of Tile
     public void renderTile( int xp, int yp, Tile tile )
     {
         // Adjust for offset (when player moves)
@@ -68,6 +68,41 @@ public class Screen
                 
                 // Store the sprite's pixels into this screen's pixels
                 pixels[ xa + ya * width ] = tile.sprite.pixels[ x + y * tile.sprite.SIZE ];
+            }
+        }
+    }
+    
+    public void renderProjectile( int xp, int yp, Projectile projectile )
+    {
+        // Adjust for offset (when player moves)
+        xp -= xOffset;
+        yp -= yOffset;
+        
+        for( int y = 0; y < projectile.getSpriteSize(); y++ )
+        {
+            // Absalute y position (y position of sprite + offset)
+            int ya = y + yp;
+            
+            for( int x = 0; x < projectile.getSpriteSize(); x++ )
+            {
+                // Absalute x position (x position of sprite + offset)
+                int xa = x + xp;
+                
+                // Don't render what can't be seen in the screen's dimensions
+                // (slight padding to allow smooth procedural tile rendering at boundaries)
+                if( xa < -projectile.getSpriteSize() || xa >= width || ya < 0 || ya >= height ) break;
+                
+                // Keep the array index from going out of bounds.
+                if( xa < 0 ) xa = 0;
+                
+                int color = projectile.getSprite().pixels[ x + y * projectile.getSpriteSize() ];
+                
+                // Check for pink (0xffff00ff). This color indicates transparency.
+                if( color != 0xffff00ff )
+                {
+                    // Store the sprite's pixels into this screen's pixels
+                    pixels[ xa + ya * width ] = color;
+                }
             }
         }
     }
