@@ -14,6 +14,7 @@ public abstract class Mob extends Entity
     protected boolean moving = false;
     // TODO: protected boolean walking = false;
     
+    // List of projectiles belonging to this Mob instance
     protected List<Projectile> projectiles = new ArrayList<>();
     
     public void move( int xChange, int yChange )

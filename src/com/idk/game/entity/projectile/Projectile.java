@@ -5,6 +5,10 @@ import com.idk.game.graphics.Sprite;
 
 public class Projectile extends Entity
 {
+    // Override Entity's x & y for dat precision
+    protected double x;
+    protected double y;
+    
     protected final int xOrigin;
     protected final int yOrigin;
     protected double angle;
@@ -14,6 +18,7 @@ public class Projectile extends Entity
     protected double speed;
     protected double rateOfFire;
     protected double range;
+    protected double distance;
     protected double damage;
     
     public Projectile( int x, int y, double dir )

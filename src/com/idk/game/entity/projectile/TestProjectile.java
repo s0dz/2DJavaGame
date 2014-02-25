@@ -2,14 +2,13 @@ package com.idk.game.entity.projectile;
 
 import com.idk.game.graphics.Screen;
 import com.idk.game.graphics.Sprite;
-import com.idk.game.level.tile.Tile;
 
 public class TestProjectile extends Projectile
 {
     public TestProjectile( int x, int y, double dir )
     {
         super( x, y, dir );
-        range = 200;
+        range = 2;
         speed = 4;
         damage = 20;
         rateOfFire = 15;
@@ -30,11 +29,21 @@ public class TestProjectile extends Projectile
     {
         x += xNext;
         y += yNext;
+        
+        if( distance() > range ) remove();
+    }
+    
+    private double distance()
+    {
+        double dist = 0;
+        dist = Math.sqrt( Math.abs( (xOrigin - x) * (xOrigin - x) + (yOrigin - y) * (yOrigin - y) ) );
+        return dist;
     }
     
     @Override
     public void render( Screen screen )
     {
-        screen.renderProjectile( x, y, this );
+        // The -12 & -2 are to adjust where Projectile originates from Player
+        screen.renderProjectile( (int) x - 12, (int) y - 2, this );
     }
 }

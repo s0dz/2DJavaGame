@@ -1,6 +1,7 @@
 package com.idk.game.entity.mob;
 
 import com.idk.game.Game;
+import com.idk.game.entity.projectile.Projectile;
 import com.idk.game.graphics.Screen;
 import com.idk.game.graphics.Sprite;
 import com.idk.game.input.Keyboard;
@@ -55,7 +56,18 @@ public class Player extends Mob
             walking = false;
         }
         
+        clear();
         updateShooting();
+    }
+    
+    private void clear()
+    {
+        for( int i = 0; i < projectiles.size(); i++ )
+        {
+            Projectile p = projectiles.get(i);
+            
+            if( p.isRemoved() ) projectiles.remove( i );
+        }
     }
     
     private void updateShooting()
