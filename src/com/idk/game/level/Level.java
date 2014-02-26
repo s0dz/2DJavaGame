@@ -1,6 +1,7 @@
 package com.idk.game.level;
 
 import com.idk.game.entity.Entity;
+import com.idk.game.entity.projectile.Projectile;
 import com.idk.game.graphics.Screen;
 import com.idk.game.level.tile.Tile;
 import java.util.List;
@@ -18,6 +19,7 @@ public class Level
     //TODO: tile_size
     
     private List<Entity> entities = new ArrayList<>();
+    private List<Projectile> projectiles = new ArrayList<>(); // Maybe sync with the Projectile list in Mob?
     
     public static Level spawn = new SpawnLevel( "/levels/spawn.png" );
     
@@ -53,6 +55,16 @@ public class Level
         {
             entities.get(i).update();
         }
+        
+        for( int i = 0; i < projectiles.size(); i++ )
+        {
+            projectiles.get(i).update();
+        }
+    }
+    
+    public List<Projectile> getProjectiles()
+    {
+        return projectiles;
     }
     
     private void time()
@@ -92,15 +104,27 @@ public class Level
             }
         }
         
+        // Render those entities, baby.
         for( int i = 0; i < entities.size(); i++ )
         {
             entities.get(i).render( screen );
+        }
+        
+        // And those projectiles.
+        for( int i = 0; i < projectiles.size(); i++ )
+        {
+            projectiles.get(i).render( screen );
         }
     }
     
     public void add( Entity e )
     {
         entities.add( e );
+    }
+    
+    public void addProjectile( Projectile p )
+    {
+        projectiles.add( p );
     }
     
     // Grass = 0xff00FF00

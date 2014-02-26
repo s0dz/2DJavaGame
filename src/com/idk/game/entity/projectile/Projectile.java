@@ -2,6 +2,7 @@ package com.idk.game.entity.projectile;
 
 import com.idk.game.entity.Entity;
 import com.idk.game.graphics.Sprite;
+import java.util.Random;
 
 public class Projectile extends Entity
 {
@@ -20,6 +21,8 @@ public class Projectile extends Entity
     protected double range;
     protected double distance;
     protected double damage;
+    
+    protected final Random random = new Random();
     
     public Projectile( int x, int y, double dir )
     {

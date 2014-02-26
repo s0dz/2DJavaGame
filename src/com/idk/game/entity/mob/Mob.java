@@ -4,8 +4,6 @@ import com.idk.game.entity.Entity;
 import com.idk.game.entity.projectile.Projectile;
 import com.idk.game.entity.projectile.TestProjectile;
 import com.idk.game.graphics.Sprite;
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class Mob extends Entity
 {
@@ -14,11 +12,10 @@ public abstract class Mob extends Entity
     protected boolean moving = false;
     // TODO: protected boolean walking = false;
     
-    // List of projectiles belonging to this Mob instance
-    protected List<Projectile> projectiles = new ArrayList<>();
-    
     public void move( int xChange, int yChange )
     {
+        System.out.println( "Size: " + level.getProjectiles().size() );
+        
         // This technique allows sliding
         if( xChange != 0 && yChange != 0 )
         {
@@ -76,7 +73,6 @@ public abstract class Mob extends Entity
     {
         // dir = Math.toDegrees( dir ); // or dir *= 180 / Math.PI // <= lol... doesn't work too well 
         Projectile p = new TestProjectile( x, y, dir ); // Probably should be double for precision
-        projectiles.add( p );
-        level.add( p );
+        level.addProjectile( p );
     }
 }

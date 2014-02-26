@@ -8,7 +8,7 @@ public class TestProjectile extends Projectile
     public TestProjectile( int x, int y, double dir )
     {
         super( x, y, dir );
-        range = 2;
+        range = 200; // random.nextInt( 100 );
         speed = 4;
         damage = 20;
         rateOfFire = 15;
