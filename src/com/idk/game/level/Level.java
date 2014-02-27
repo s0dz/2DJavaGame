@@ -72,6 +72,37 @@ public class Level
         
     }
     
+    public boolean tileCollision( double x, double y, double xChange, double yChange, int size )
+    {
+        boolean solid = false;
+        
+        // Check all 4 corners of the tile
+        for( int c = 0; c < 4; c++ )
+        {
+            // This maths is for finding the collision sweet spot
+            int xt = ( ( (int) x + (int) xChange ) + c % 2 * size * 2 - 12 ) / 16; // MAGIC
+            int yt = ( ( (int) y + (int) yChange ) + c / 2 * size * 2 ) / 16; // NUMBERZ!
+            
+            if( getTile( xt, yt ).solid() ) solid = true;
+        }
+        
+        //double xt = ((x + xa) + c % 2 * size - size/2)/16;
+        //double yt = ((y + ya) + c / 2 * size - size/2)/16;
+        //
+        //This easily sets the four corners symmetrically around the center for any sized object.  Also, the size of the projectile in this case looks to be about 2.
+        //
+        // In the TestProjectile class,
+        //
+        //if (!level.tileCollision(x, y, nx, ny, 2)){
+        //x += nx;
+        //y += ny;
+        //} else {remove();}
+        //
+        //This will remove the projectile if it is colliding, without having to be called a second time.  It's more efficient this way.﻿
+    
+        return solid;
+    }
+    
     /**
      * Renders level in the passed in Screen instance based on the coordinates
      * of the Player.
@@ -124,6 +155,7 @@ public class Level
     
     public void addProjectile( Projectile p )
     {
+        p.init( this );
         projectiles.add( p );
     }
     

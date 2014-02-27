@@ -24,11 +24,12 @@ public class TestProjectile extends Projectile
     @Override
     public void update()
     {
+        if( level.tileCollision( x, y, xNext, yNext, 7 ) ) remove();
         move();
     }
-    
+       
     protected void move()
-    {
+    {                   
         x += xNext;
         y += yNext;
         
