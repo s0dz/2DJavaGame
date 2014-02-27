@@ -5,13 +5,15 @@ import com.idk.game.graphics.Sprite;
 
 public class TestProjectile extends Projectile
 {
+    // higher == slower
+    public static final int FIRE_RATE = 10;
+    
     public TestProjectile( int x, int y, double dir )
     {
         super( x, y, dir );
         range = 200; // random.nextInt( 100 );
         speed = 4;
         damage = 20;
-        rateOfFire = 15;
         
         sprite = Sprite.projectile_test;
         

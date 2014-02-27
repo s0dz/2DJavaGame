@@ -17,7 +17,6 @@ public class Projectile extends Entity
     protected double xNext;
     protected double yNext;
     protected double speed;
-    protected double rateOfFire;
     protected double range;
     protected double distance;
     protected double damage;

@@ -2,6 +2,7 @@ package com.idk.game.entity.mob;
 
 import com.idk.game.Game;
 import com.idk.game.entity.projectile.Projectile;
+import com.idk.game.entity.projectile.TestProjectile;
 import com.idk.game.graphics.Screen;
 import com.idk.game.graphics.Sprite;
 import com.idk.game.input.Keyboard;
@@ -13,6 +14,8 @@ public class Player extends Mob
     private Sprite sprite;
     private int animation = 0;
     private boolean walking = false;
+    
+    private int fireRate = 0;
     
     public Player( Keyboard input )
     {
@@ -27,11 +30,14 @@ public class Player extends Mob
         this.y = y;
         this.input = input;
         sprite = Sprite.player_up; // Since dir is initialized at 0, not a big deal
+        fireRate = TestProjectile.FIRE_RATE;
     }
     
     @Override
     public void update()
     {
+        if( fireRate > 0 ) fireRate--;
+        
         int xChange = 0;
         int yChange = 0;
         
@@ -72,7 +78,7 @@ public class Player extends Mob
     
     private void updateShooting()
     {
-        if( Mouse.getButton() == 1 )
+        if( Mouse.getButton() == 1 && fireRate <= 0 )
         {
             // Distance from mouse coords to center of screen
             double dx = Mouse.getX() - Game.getWindowWidth() / 2;
@@ -82,6 +88,8 @@ public class Player extends Mob
             double dir = Math.atan2( dy, dx ); // atan2 handles dividing by zero
             
             shoot( x, y, dir );
+            
+            fireRate = TestProjectile.FIRE_RATE;
         }
     }
     

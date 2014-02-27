@@ -14,8 +14,6 @@ public abstract class Mob extends Entity
     
     public void move( int xChange, int yChange )
     {
-        System.out.println( "Size: " + level.getProjectiles().size() );
-        
         // This technique allows sliding
         if( xChange != 0 && yChange != 0 )
         {
