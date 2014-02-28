@@ -2,6 +2,7 @@ package com.idk.game;
 
 import com.idk.game.entity.mob.Player;
 import com.idk.game.graphics.Screen;
+import com.idk.game.graphics.Sprite;
 import com.idk.game.input.Keyboard;
 import com.idk.game.input.Mouse;
 import com.idk.game.level.Level;
@@ -14,6 +15,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.util.Random;
 import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable
@@ -159,6 +161,15 @@ public class Game extends Canvas implements Runnable
         int yScroll = player.y - screen.height / 2;
         level.render( xScroll, yScroll, screen );
         player.render( screen );
+        
+        Sprite sprite = new Sprite( 2, 2, 0xffffff );
+        Random random = new Random();
+        for( int i = 0; i < 100; i++ )
+        {
+            int x = random.nextInt( 100 );
+            int y = random.nextInt( 100 );
+            screen.renderSprite( 60 + x, 50 + y, sprite, false );
+        }
         
         for( int i = 0; i < pixels.length; i++ )
         {
