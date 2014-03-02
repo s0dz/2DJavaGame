@@ -42,6 +42,10 @@ public class Sprite
     // Projectiles
     public static Sprite projectile_test = new Sprite( 16, 0, 0, SpriteSheet.projectile_test );
     
+    
+    // Particles
+    public static Sprite particle_normal = new Sprite( 3, 0xAAAAAA );
+    
     public Sprite( int size, int x, int y, SpriteSheet sheet )
     {
         SIZE = size;
