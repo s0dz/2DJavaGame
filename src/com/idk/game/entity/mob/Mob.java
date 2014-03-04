@@ -1,6 +1,7 @@
 package com.idk.game.entity.mob;
 
 import com.idk.game.entity.Entity;
+import com.idk.game.entity.particle.Particle;
 import com.idk.game.entity.projectile.Projectile;
 import com.idk.game.entity.projectile.TestProjectile;
 import com.idk.game.graphics.Sprite;
@@ -36,6 +37,11 @@ public abstract class Mob extends Entity
         {
             x += xChange;
             y += yChange;
+        }
+        else
+        {
+            Particle p = new Particle( x, y, 50, 50 );
+            level.add( p );
         }
     }
     

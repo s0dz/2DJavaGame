@@ -2,7 +2,6 @@ package com.idk.game;
 
 import com.idk.game.entity.mob.Player;
 import com.idk.game.graphics.Screen;
-import com.idk.game.graphics.Sprite;
 import com.idk.game.input.Keyboard;
 import com.idk.game.input.Mouse;
 import com.idk.game.level.Level;
@@ -15,7 +14,6 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import java.util.Random;
 import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable
