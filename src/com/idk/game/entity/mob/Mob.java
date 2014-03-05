@@ -40,7 +40,7 @@ public abstract class Mob extends Entity
         }
         else
         {
-            Particle p = new Particle( x, y, 50, 50 );
+            Particle p = new Particle( x, y, 50 );
             level.add( p );
         }
     }
@@ -77,6 +77,6 @@ public abstract class Mob extends Entity
     {
         // dir = Math.toDegrees( dir ); // or dir *= 180 / Math.PI // <= lol... doesn't work too well 
         Projectile p = new TestProjectile( x, y, dir ); // Probably should be double for precision
-        level.addProjectile( p );
+        level.add( p );
     }
 }

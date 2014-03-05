@@ -1,6 +1,8 @@
 package com.idk.game.level;
 
 import com.idk.game.entity.Entity;
+import com.idk.game.entity.Spawner;
+import com.idk.game.entity.particle.Particle;
 import com.idk.game.entity.projectile.Projectile;
 import com.idk.game.graphics.Screen;
 import com.idk.game.level.tile.Tile;
@@ -20,6 +22,7 @@ public class Level
     
     private List<Entity> entities = new ArrayList<>();
     private List<Projectile> projectiles = new ArrayList<>(); // Maybe sync with the Projectile list in Mob?
+    private List<Particle> particles = new ArrayList<>(); // Maybe sync with the Projectile list in Mob?
     
     public static Level spawn = new SpawnLevel( "/levels/spawn.png" );
     
@@ -37,6 +40,8 @@ public class Level
     {
         loadLevel( path );
         generateLevel();
+        
+        add( new Spawner( 16 * 16, 62 * 16, Spawner.Type.PARTICLE, 50 , this ) );
     }
     
     protected void loadLevel( String path )
@@ -59,6 +64,11 @@ public class Level
         for( int i = 0; i < projectiles.size(); i++ )
         {
             projectiles.get(i).update();
+        }
+        
+        for( int i = 0; i < particles.size(); i++ )
+        {
+            particles.get(i).update();
         }
     }
     
@@ -146,17 +156,29 @@ public class Level
         {
             projectiles.get(i).render( screen );
         }
+        
+        for( int i = 0; i < particles.size(); i++ )
+        {
+            particles.get(i).render( screen );
+        }
     }
     
     public void add( Entity e )
     {
-        entities.add( e );
-    }
-    
-    public void addProjectile( Projectile p )
-    {
-        p.init( this );
-        projectiles.add( p );
+        e.init( this );
+        
+        if( e instanceof Particle )
+        {
+            particles.add( ( Particle ) e );
+        }
+        else if ( e instanceof Projectile )
+        {
+            projectiles.add( ( Projectile ) e );
+        }
+        else
+        {
+            entities.add( e );
+        }
     }
     
     // Grass = 0xff00FF00
