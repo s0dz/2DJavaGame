@@ -44,7 +44,14 @@ public class Sprite
     
     
     // Particles
-    public static Sprite particle_normal = new Sprite( 3, 0xAAAAAA );
+    public static Sprite particle_normal = new Sprite( 3, 3, 0xAAAAAA );
+    
+    /*
+    * TODO: Clean these constructors up... Specifically the third one
+    *       that does not set height and width which, as it turns out,
+    *       makes rendering it impossible. (Due to the nested for loops
+    *       using height and width)
+    */
     
     public Sprite( int size, int x, int y, SpriteSheet sheet )
     {

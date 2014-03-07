@@ -38,6 +38,6 @@ public class Particle extends Entity
     @Override
     public void render( Screen screen )
     {
-        screen.renderSprite( (int) xx, (int) yy, sprite, true);
+        screen.renderSprite( (int) xx, (int) yy, sprite, true );
     }
 }
