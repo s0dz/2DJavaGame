@@ -30,9 +30,6 @@ public class Screen
         {
             tiles[i] = random.nextInt( 0xffffff );
         }
-        
-        // Temp - Just for finding the root of the map (Top Left)
-        tiles[0] = 0;
     }
     
     public void clear()
