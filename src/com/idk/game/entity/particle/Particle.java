@@ -9,6 +9,7 @@ public class Particle extends Entity
     private Sprite sprite; // Might move this into entity class...
     
     private int life;
+    private int time = 0;
     
     protected double xx, yy;
     protected double xa, ya;
@@ -19,7 +20,7 @@ public class Particle extends Entity
         this.y = y;
         this.xx = x;
         this.yy = y;        
-        this.life = life;
+        this.life = life + ( random.nextInt( 20 ) - 10 );
         
         sprite = Sprite.particle_normal;
         
@@ -31,6 +32,9 @@ public class Particle extends Entity
     @Override
     public void update()
     {
+        time++;
+        if( time >= 7400 ) time = 0; // Just keep it from running buck wild
+        if( time > life ) remove();
         this.xx += xa;
         this.yy += ya;
     }

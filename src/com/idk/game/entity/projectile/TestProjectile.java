@@ -1,6 +1,6 @@
 package com.idk.game.entity.projectile;
 
-import com.idk.game.entity.Spawner;
+import com.idk.game.entity.spawner.ParticleSpawner;
 import com.idk.game.graphics.Screen;
 import com.idk.game.graphics.Sprite;
 
@@ -27,7 +27,7 @@ public class TestProjectile extends Projectile
     {
         if( level.tileCollision( x, y, xNext, yNext, 7 ) )
         {
-            level.add( new Spawner( 16 * 16, 62 * 16, Spawner.Type.PARTICLE, 500 , level ) );
+            level.add( new ParticleSpawner( (int) x, (int) y, 44, 500 , level ) );
             remove();
         }
         move();

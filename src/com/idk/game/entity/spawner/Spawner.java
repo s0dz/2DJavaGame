@@ -1,6 +1,6 @@
-package com.idk.game.entity;
+package com.idk.game.entity.spawner;
 
-import com.idk.game.entity.particle.Particle;
+import com.idk.game.entity.Entity;
 import com.idk.game.level.Level;
 
 public class Spawner extends Entity
@@ -18,14 +18,6 @@ public class Spawner extends Entity
         
         this.x = x;
         this.y = y;
-        this.type = type;
-        
-        for( int i = 0; i < amount; i ++ )
-        {
-            if( type == Type.PARTICLE )
-            {
-                level.add( new Particle( x, y, 50 ) );
-            }
-        }
+        this.type = type;       
     }
 }

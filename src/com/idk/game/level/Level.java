@@ -1,7 +1,7 @@
 package com.idk.game.level;
 
 import com.idk.game.entity.Entity;
-import com.idk.game.entity.Spawner;
+import com.idk.game.entity.spawner.Spawner;
 import com.idk.game.entity.particle.Particle;
 import com.idk.game.entity.projectile.Projectile;
 import com.idk.game.graphics.Screen;
@@ -69,6 +69,26 @@ public class Level
         for( int i = 0; i < particles.size(); i++ )
         {
             particles.get(i).update();
+        }
+        
+        remove();
+    }
+    
+    private void remove()
+    {
+        for( int i = 0; i < entities.size(); i++ )
+        {
+            if( entities.get(i).isRemoved() ) entities.remove( i );
+        }
+        
+        for( int i = 0; i < projectiles.size(); i++ )
+        {
+            if( projectiles.get(i).isRemoved() ) projectiles.remove( i );
+        }
+        
+        for( int i = 0; i < particles.size(); i++ )
+        {
+            if( particles.get(i).isRemoved() ) particles.remove( i );
         }
     }
     
