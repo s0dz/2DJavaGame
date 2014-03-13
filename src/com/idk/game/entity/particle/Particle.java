@@ -40,6 +40,8 @@ public class Particle extends Entity
         this.xx += xa;
         this.yy += ya;
         this.zz += za;
+        
+        // FOR SCIENCE!
     }
     
     @Override
