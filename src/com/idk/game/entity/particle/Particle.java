@@ -11,8 +11,8 @@ public class Particle extends Entity
     private int life;
     private int time = 0;
     
-    protected double xx, yy;
-    protected double xa, ya;
+    protected double xx, yy, zz;
+    protected double xa, ya, za;
     
     public Particle( int x, int y, int life )
     {
@@ -27,6 +27,7 @@ public class Particle extends Entity
         // Normally distrubited results. Dat bell curve doh.
         this.xa = random.nextGaussian();
         this.ya = random.nextGaussian();
+        this.zz = 2.0;
     }
     
     @Override
@@ -35,13 +36,15 @@ public class Particle extends Entity
         time++;
         if( time >= 7400 ) time = 0; // Just keep it from running buck wild
         if( time > life ) remove();
+        za -= 0.1;
         this.xx += xa;
         this.yy += ya;
+        this.zz += za;
     }
     
     @Override
     public void render( Screen screen )
     {
-        screen.renderSprite( (int) xx, (int) yy, sprite, true );
+        screen.renderSprite( (int) xx, (int) yy - (int) zz, sprite, true );
     }
 }
