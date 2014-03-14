@@ -102,7 +102,7 @@ public class Level
         
     }
     
-    public boolean tileCollision( double x, double y, double xChange, double yChange, int size )
+    public boolean tileCollision( int x, int y, int size, int xOffset, int yOffset )
     {
         boolean solid = false;
         
@@ -110,8 +110,8 @@ public class Level
         for( int c = 0; c < 4; c++ )
         {
             // This maths is for finding the collision sweet spot
-            int xt = ( ( (int) x + (int) xChange ) + c % 2 * size * 2 - 12 ) / 16; // MAGIC
-            int yt = ( ( (int) y + (int) yChange ) + c / 2 * size * 2 ) / 16; // NUMBERZ!
+            int xt = ( x - c % 2 * size + xOffset ) >> 4;
+            int yt = ( y - c / 2 * size + yOffset ) >> 4;
             
             if( getTile( xt, yt ).solid() ) solid = true;
         }
