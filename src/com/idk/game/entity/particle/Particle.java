@@ -25,9 +25,13 @@ public class Particle extends Entity
         sprite = Sprite.particle_normal;
         
         // Normally distrubited results. Dat bell curve doh.
-        this.xa = random.nextGaussian();
+        this.xa = random.nextGaussian() + 1.8;
+        
+        if( this.xa < 0 ) xa = 0.1;
+        
+        // gravity
         this.ya = random.nextGaussian();
-        this.zz = 2.0;
+        this.zz = random.nextFloat() + 2.0;
     }
     
     @Override
@@ -37,6 +41,16 @@ public class Particle extends Entity
         if( time >= 7400 ) time = 0; // Just keep it from running buck wild
         if( time > life ) remove();
         za -= 0.1;
+        
+        // floor/bounce simulation
+        if( zz < 0 )
+        {
+            zz = 0;
+            za *= -0.55;
+            xa *= 0.4;
+            ya *= 0.4;
+        }
+        
         this.xx += xa;
         this.yy += ya;
         this.zz += za;
@@ -47,6 +61,6 @@ public class Particle extends Entity
     @Override
     public void render( Screen screen )
     {
-        screen.renderSprite( (int) xx, (int) yy - (int) zz, sprite, true );
+        screen.renderSprite( (int) xx - 12, (int) yy - (int) zz, sprite, true );
     }
 }
