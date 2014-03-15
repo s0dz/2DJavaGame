@@ -27,7 +27,7 @@ public class TestProjectile extends Projectile
     {
         if( level.tileCollision( (int)( x + xNext ), (int)( y + yNext ), 7, 5, 4 ) )
         {
-            level.add( new ParticleSpawner( (int) x, (int) y, 44, 50 , level ) );
+            level.add( new ParticleSpawner( (int) x, (int) y, 440, 50 , level ) );
             remove();
         }
         move();
