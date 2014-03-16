@@ -8,16 +8,32 @@ public class SpriteSheet
 {
     private String path;
     public final int SIZE;
+    public final int WIDTH;
+    public final int HEIGHT;
     public int[] pixels;
     
     public static SpriteSheet tiles = new SpriteSheet( "/textures/sheets/spritesheet.png", 256 ); 
     public static SpriteSheet spawn_level = new SpriteSheet( "/textures/sheets/spawn_level.png", 48 );
     public static SpriteSheet projectile_test = new SpriteSheet( "/textures/sheets/projectiles/test.png", 48 );
         
+    public static SpriteSheet player = new SpriteSheet( "/textures/sheets/player_sheet.png", 128, 96 );
+    
     public SpriteSheet( String path, int size )
     {
         this.path = path;
         SIZE = size;
+        WIDTH = size;
+        HEIGHT = size;
+        pixels = new int[ SIZE * SIZE ];
+        load();
+    }
+    
+    public SpriteSheet( String path, int width, int height )
+    {
+        this.path = path;
+        SIZE = -1;
+        WIDTH = width;
+        HEIGHT = height;
         pixels = new int[ SIZE * SIZE ];
         load();
     }
