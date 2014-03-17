@@ -17,6 +17,7 @@ public class SpriteSheet
     public static SpriteSheet projectile_test = new SpriteSheet( "/textures/sheets/projectiles/test.png", 48 );
         
     public static SpriteSheet player = new SpriteSheet( "/textures/sheets/player_sheet.png", 128, 96 );
+    public static SpriteSheet player_down = new SpriteSheet( player, 0, 0, 1, 3, 32 );
     
     public SpriteSheet( SpriteSheet sheet, int x, int y, int width, int height, int spriteSize )
     {
@@ -24,6 +25,24 @@ public class SpriteSheet
         int yy = y * spriteSize;
         int w = width * spriteSize;
         int h = height * spriteSize;
+        
+        WIDTH = w;
+        HEIGHT = h;
+        if( width == height ) SIZE = width;
+        else SIZE = -1;
+        pixels = new int[ w * h ];
+        
+        for( int y0 = 0; y0 < h; y0++ )
+        {
+            int yp = yy + y0;
+            
+            for( int x0 = 0; x0 < w; x0++ )
+            {
+                int xp = xx + x0;
+                
+                pixels[ x0 + y0 * w ] = sheet.pixels[ xp + yp * sheet.WIDTH ];
+            }
+        }
     }
     
     public SpriteSheet( String path, int size )

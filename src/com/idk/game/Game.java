@@ -2,6 +2,7 @@ package com.idk.game;
 
 import com.idk.game.entity.mob.Player;
 import com.idk.game.graphics.Screen;
+import com.idk.game.graphics.SpriteSheet;
 import com.idk.game.input.Keyboard;
 import com.idk.game.input.Mouse;
 import com.idk.game.level.Level;
@@ -159,6 +160,8 @@ public class Game extends Canvas implements Runnable
         int yScroll = player.y - screen.height / 2;
         level.render( xScroll, yScroll, screen );
         player.render( screen );
+        
+        screen.renderSheet( 40, 40, SpriteSheet.player, false );
         
         for( int i = 0; i < pixels.length; i++ )
         {
