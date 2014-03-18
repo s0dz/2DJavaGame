@@ -9,6 +9,11 @@ public class TestProjectile extends Projectile
     // higher == slower
     public static final int FIRE_RATE = 10;
     
+    // Sprite info
+    public static final int SIZE = 7;
+    public static final int X_OFFSET = 5;
+    public static final int Y_OFFSET = 4;
+    
     public TestProjectile( int x, int y, double dir )
     {
         super( x, y, dir );
@@ -25,7 +30,7 @@ public class TestProjectile extends Projectile
     @Override
     public void update()
     {
-        if( level.tileCollision( (int)( x + xNext ), (int)( y + yNext ), 7, 5, 4 ) )
+        if( level.tileCollision( (int)( x + xNext ), (int)( y + yNext ), SIZE, X_OFFSET, Y_OFFSET ) )
         {
             level.add( new ParticleSpawner( (int) x, (int) y, 440, 50 , level ) );
             remove();
