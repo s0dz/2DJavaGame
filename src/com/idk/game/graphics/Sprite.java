@@ -53,6 +53,14 @@ public class Sprite
     *       using height and width)
     */
     
+    protected Sprite( SpriteSheet sheet, int width, int height )
+    {
+        SIZE = width == height ? width : -1;
+        this.width = width;
+        this.height = height;
+        this.sheet = sheet;
+    }
+    
     public Sprite( int size, int x, int y, SpriteSheet sheet )
     {
         SIZE = size;
