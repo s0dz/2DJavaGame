@@ -19,6 +19,9 @@ public class SpriteSheet
     public static SpriteSheet player = new SpriteSheet( "/textures/sheets/player_sheet.png", 128, 96 );
     public static SpriteSheet player_down = new SpriteSheet( player, 0, 0, 1, 3, 32 );
     
+    private Sprite[] sprites;
+    
+    // Sub sheet
     public SpriteSheet( SpriteSheet sheet, int x, int y, int width, int height, int spriteSize )
     {
         int xx = x * spriteSize;
@@ -43,6 +46,20 @@ public class SpriteSheet
                 pixels[ x0 + y0 * w ] = sheet.pixels[ xp + yp * sheet.WIDTH ];
             }
         }
+        
+        for( int ya = 0; ya < height; y++ )
+        {
+            for( int xa = 0; xa < height; x++ )
+            {
+                for( int y0 = 0; y0 < h; y0++ )
+                {
+                    for( int x0 = 0; x0 < w; x0++ )
+                    {
+                        Sprite sprite = new Sprite(  );
+                    }
+                }
+            }
+        }
     }
     
     public SpriteSheet( String path, int size )
@@ -63,6 +80,11 @@ public class SpriteSheet
         HEIGHT = height;
         pixels = new int[ WIDTH * HEIGHT ];
         load();
+    }
+    
+    public Sprite getSprite()
+    {
+        
     }
     
     private void load()
