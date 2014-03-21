@@ -47,17 +47,23 @@ public class SpriteSheet
             }
         }
         
+        // Go through the number of sprites in sub sheet top to bottom
+        // and then left to right.
+        int frame = 0;
         for( int ya = 0; ya < height; y++ )
         {
             for( int xa = 0; xa < height; x++ )
             {
+                int[] spritePixels = new int[spriteSize * spriteSize];
                 for( int y0 = 0; y0 < h; y0++ )
                 {
                     for( int x0 = 0; x0 < w; x0++ )
                     {
-                        Sprite sprite = new Sprite(  );
+                        spritePixels[x0 + y0 * spriteSize] = pixels[(x0 + xa * spriteSize) + (y0 + ya * spriteSize) * WIDTH];                        
                     }
                 }
+                Sprite sprite = new Sprite( spritePixels, spriteSize, spriteSize );
+                sprites[frame++] = sprite;
             }
         }
     }
@@ -82,9 +88,9 @@ public class SpriteSheet
         load();
     }
     
-    public Sprite getSprite()
+    public Sprite[] getSprites()
     {
-        
+        return sprites;
     }
     
     private void load()

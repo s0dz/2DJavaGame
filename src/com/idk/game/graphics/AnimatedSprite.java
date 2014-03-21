@@ -9,16 +9,17 @@ public class AnimatedSprite extends Sprite
     
     public AnimatedSprite( SpriteSheet sheet, int width, int height, int length )
     {
-        super( sheet, width, height );
-        
+        super( sheet, width, height );        
         this.length = length;        
+        
+        if( length > sheet.getSprites().length ) System.err.println("Error: Length of animation is too long.");
     }
     
     public void update()
     {
         if( frame > length ) frame = 0;
         else frame++;
-        sprite = 
+        sprite = sheet.getSprites()[frame];
     }
     
     public Sprite getSprite()

@@ -7,7 +7,7 @@ public class Sprite
     private int height;
     private int x, y;
     public int[] pixels;
-    private SpriteSheet sheet;
+    protected SpriteSheet sheet;
     
     public static Sprite voidSprite = new Sprite( 16, 0 ); // Black sprite
     
@@ -98,6 +98,15 @@ public class Sprite
         SIZE = size;
         pixels = new int[ SIZE * SIZE ];
         setColor( color );
+    }
+    
+    public Sprite( int[] pixels, int width, int height )
+    {
+        SIZE = ( width == height ) ? width : -1;
+        
+        this.width = width;
+        this.height = height;
+        this.pixels = pixels;
     }
     
     private void load()
