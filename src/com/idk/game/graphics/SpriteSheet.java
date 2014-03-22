@@ -29,10 +29,12 @@ public class SpriteSheet
         int w = width * spriteSize;
         int h = height * spriteSize;
         
-        WIDTH = w;
-        HEIGHT = h;
         if( width == height ) SIZE = width;
         else SIZE = -1;
+        
+        WIDTH = w;
+        HEIGHT = h;
+
         pixels = new int[ w * h ];
         
         for( int y0 = 0; y0 < h; y0++ )
@@ -50,14 +52,15 @@ public class SpriteSheet
         // Go through the number of sprites in sub sheet top to bottom
         // and then left to right.
         int frame = 0;
-        for( int ya = 0; ya < height; y++ )
+        sprites = new Sprite[width * height];
+        for( int ya = 0; ya < height; ya++ )
         {
-            for( int xa = 0; xa < height; x++ )
+            for( int xa = 0; xa < width; xa++ )
             {
                 int[] spritePixels = new int[spriteSize * spriteSize];
-                for( int y0 = 0; y0 < h; y0++ )
+                for( int y0 = 0; y0 < spriteSize; y0++ )
                 {
-                    for( int x0 = 0; x0 < w; x0++ )
+                    for( int x0 = 0; x0 < spriteSize; x0++ )
                     {
                         spritePixels[x0 + y0 * spriteSize] = pixels[(x0 + xa * spriteSize) + (y0 + ya * spriteSize) * WIDTH];                        
                     }

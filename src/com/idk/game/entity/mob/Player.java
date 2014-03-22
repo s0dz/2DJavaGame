@@ -3,8 +3,10 @@ package com.idk.game.entity.mob;
 import com.idk.game.Game;
 import com.idk.game.entity.projectile.Projectile;
 import com.idk.game.entity.projectile.TestProjectile;
+import com.idk.game.graphics.AnimatedSprite;
 import com.idk.game.graphics.Screen;
 import com.idk.game.graphics.Sprite;
+import com.idk.game.graphics.SpriteSheet;
 import com.idk.game.input.Keyboard;
 import com.idk.game.input.Mouse;
 
@@ -14,6 +16,7 @@ public class Player extends Mob
     private Sprite sprite;
     private int animation = 0;
     private boolean walking = false;
+    private AnimatedSprite test = new AnimatedSprite( SpriteSheet.player_down, 32, 32, 3 );
     
     private int fireRate = 0;
     
@@ -64,6 +67,7 @@ public class Player extends Mob
         
         clear();
         updateShooting();
+        test.update();
     }
     
     private void clear()
@@ -165,6 +169,7 @@ public class Player extends Mob
             }
         }
         
+        sprite = test.getSprite();
         // Render sprite for player with offset to center
         screen.renderPlayer( x - 16, y - 16, sprite, flip );
     }
