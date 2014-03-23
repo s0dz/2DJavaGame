@@ -126,74 +126,8 @@ public class Player extends Mob
     {        
         int flip = 0;
         
-        // Load correct direcitonal sprite and animation
-//        if( dir == 0 )
-//        {
-//            sprite = Sprite.player_up;
-//            
-//            if( walking )
-//            {
-//                if( animation % 20 > 10 )
-//                {
-//                    sprite = Sprite.player_up_1;
-//                }
-//                else
-//                {
-//                    sprite = Sprite.player_up_2;
-//                }
-//            }
-//        }        
-//        if( dir == 1 )
-//        {
-//            sprite = Sprite.player_side;
-//            
-//            if( walking )
-//            {
-//                if( animation % 20 > 10 )
-//                {
-//                    sprite = Sprite.player_side_1;
-//                }
-//                else
-//                {
-//                    sprite = Sprite.player_side_2;
-//                }
-//            }
-//        }
-//        if( dir == 2 )
-//        {
-//            sprite = Sprite.player_down;
-//            
-//            if( walking )
-//            {
-//                if( animation % 20 > 10 )
-//                {
-//                    sprite = Sprite.player_down_1;
-//                }
-//                else
-//                {
-//                    sprite = Sprite.player_down_2;
-//                }
-//            }
-//        }
-//        if( dir == 3 )
-//        {
-//            sprite = Sprite.player_side;
-//            flip = 1;
-//            
-//            if( walking )
-//            {
-//                if( animation % 20 > 10 )
-//                {
-//                    sprite = Sprite.player_side_1;
-//                }
-//                else
-//                {
-//                    sprite = Sprite.player_side_2;
-//                }
-//            }
-//        }
-        
         sprite = animSprite.getSprite();
+        
         // Render sprite for player with offset to center
         screen.renderPlayer( x - 16, y - 16, sprite, flip );
     }

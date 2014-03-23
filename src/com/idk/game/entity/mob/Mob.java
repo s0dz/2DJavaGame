@@ -4,6 +4,7 @@ import com.idk.game.entity.Entity;
 import com.idk.game.entity.particle.Particle;
 import com.idk.game.entity.projectile.Projectile;
 import com.idk.game.entity.projectile.TestProjectile;
+import com.idk.game.graphics.Screen;
 import com.idk.game.graphics.Sprite;
 
 public abstract class Mob extends Entity
@@ -46,15 +47,9 @@ public abstract class Mob extends Entity
     }
     
     @Override
-    public void update()
-    {
-        
-    }
+    public abstract void update();
     
-    public void render()
-    {
-        
-    }
+    public abstract void render( Screen screen );
     
     private boolean collision( int xChange, int yChange )
     {

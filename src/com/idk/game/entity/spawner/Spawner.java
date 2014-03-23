@@ -3,7 +3,7 @@ package com.idk.game.entity.spawner;
 import com.idk.game.entity.Entity;
 import com.idk.game.level.Level;
 
-public class Spawner extends Entity
+public abstract class Spawner extends Entity
 {
     public enum Type
     {

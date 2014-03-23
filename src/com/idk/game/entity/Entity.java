@@ -4,7 +4,7 @@ import com.idk.game.graphics.Screen;
 import com.idk.game.level.Level;
 import java.util.Random;
 
-public abstract class Entity
+public class Entity
 {
     public int x;
     public int y;
