@@ -17,7 +17,11 @@ public class SpriteSheet
     public static SpriteSheet projectile_test = new SpriteSheet( "/textures/sheets/projectiles/test.png", 48 );
         
     public static SpriteSheet player = new SpriteSheet( "/textures/sheets/player_sheet.png", 128, 96 );
-    public static SpriteSheet player_down = new SpriteSheet( player, 0, 0, 1, 3, 32 );
+    public static SpriteSheet player_down = new SpriteSheet( player, 2, 0, 1, 3, 32 );
+    public static SpriteSheet player_up = new SpriteSheet( player, 0, 0, 1, 3, 32 );
+    public static SpriteSheet player_left = new SpriteSheet( player, 3, 0, 1, 3, 32 );
+    public static SpriteSheet player_right = new SpriteSheet( player, 1, 0, 1, 3, 32 );
+    
     
     private Sprite[] sprites;
     
