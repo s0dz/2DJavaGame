@@ -150,7 +150,7 @@ public class Screen
         }
     }
     
-    public void renderPlayer( int xp, int yp, Sprite sprite, int flip )
+    public void renderMob( int xp, int yp, Sprite sprite, int flip )
     {
         // Adjust for offset (when player moves)
         xp -= xOffset;

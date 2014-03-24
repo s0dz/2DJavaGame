@@ -129,6 +129,6 @@ public class Player extends Mob
         sprite = animSprite.getSprite();
         
         // Render sprite for player with offset to center
-        screen.renderPlayer( x - 16, y - 16, sprite, flip );
+        screen.renderMob( x - 16, y - 16, sprite, flip );
     }
 }

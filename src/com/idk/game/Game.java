@@ -161,7 +161,7 @@ public class Game extends Canvas implements Runnable
         level.render( xScroll, yScroll, screen );
         player.render( screen );
         
-        screen.renderSheet( 40, 40, SpriteSheet.player_down, false );
+        // screen.renderSheet( 40, 40, SpriteSheet.player_down, false );
         
         for( int i = 0; i < pixels.length; i++ )
         {

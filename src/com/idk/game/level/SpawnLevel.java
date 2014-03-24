@@ -1,5 +1,6 @@
 package com.idk.game.level;
 
+import com.idk.game.entity.mob.Dummy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -31,6 +32,7 @@ public class SpawnLevel extends Level
             System.out.println( "Exception: Could not load level file!" );
             e.printStackTrace();
         }
+        add( new Dummy( 20, 55 ) );
     }
     
     @Override

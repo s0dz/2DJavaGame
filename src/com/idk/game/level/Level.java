@@ -41,7 +41,7 @@ public class Level
         loadLevel( path );
         generateLevel();
         
-        add( new Spawner( 16 * 16, 62 * 16, Spawner.Type.PARTICLE, 500 , this ) );
+        // add( new Spawner( 16 * 16, 62 * 16, Spawner.Type.PARTICLE, 500 , this ) );
     }
     
     protected void loadLevel( String path )
