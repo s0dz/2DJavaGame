@@ -10,9 +10,15 @@ import com.idk.game.graphics.Sprite;
 public abstract class Mob extends Entity
 {
     protected Sprite sprite;
-    protected int dir = 0;
     protected boolean moving = false;
-    // TODO: protected boolean walking = false;
+    protected boolean walking = false; // TODO...
+    
+    protected enum Direction
+    {
+        UP, DOWN, LEFT, RIGHT
+    }
+    
+    protected Direction dir;
     
     public void move( int xChange, int yChange )
     {
@@ -28,10 +34,10 @@ public abstract class Mob extends Entity
         //         0
         //      3     1
         //         2
-        if( xChange > 0 ) dir = 1;
-        if( xChange < 0 ) dir = 3;
-        if( yChange > 0 ) dir = 2;
-        if( yChange < 0 ) dir = 0;
+        if( xChange > 0 ) dir = Direction.RIGHT;
+        if( xChange < 0 ) dir = Direction.LEFT;
+        if( yChange > 0 ) dir = Direction.DOWN;
+        if( yChange < 0 ) dir = Direction.UP;
         
         // Move if not in a collision
         if( !collision( xChange, yChange ) )

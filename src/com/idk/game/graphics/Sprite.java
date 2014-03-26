@@ -39,10 +39,11 @@ public class Sprite
     public static Sprite player_down_1 = new Sprite( 32, 2, 6, SpriteSheet.tiles );
     public static Sprite player_down_2 = new Sprite( 32, 2, 7, SpriteSheet.tiles );
         
+    public static Sprite dummy = new Sprite( 32, 0, 0, SpriteSheet.dummy_down );
+        
     // Projectiles
     public static Sprite projectile_test = new Sprite( 16, 0, 0, SpriteSheet.projectile_test );
-    
-    
+       
     // Particles
     public static Sprite particle_normal = new Sprite( 3, 3, 0xAAAAAA );
     
@@ -111,11 +112,11 @@ public class Sprite
     
     private void load()
     {
-        for( int y = 0; y < SIZE; y++ )
+        for( int y = 0; y < height; y++ )
         {
-            for( int x = 0; x < SIZE; x++ )
+            for( int x = 0; x < width; x++ )
             {
-                pixels[ x + y * SIZE ] = sheet.pixels[ (this.x + x ) + ( this.y + y ) * sheet.SIZE ];
+                pixels[ x + y * width ] = sheet.pixels[ (this.x + x ) + ( this.y + y ) * sheet.WIDTH ];
             }
         }
     }
