@@ -53,10 +53,6 @@ public class Player extends Mob
         int xChange = 0;
         int yChange = 0;
         
-        // Increase animation, but don't let it crash the game.
-        if( animation < 7500 ) animation++;
-        else animation = 0;
-        
         // Check input and set change
         if( input.up )
         {

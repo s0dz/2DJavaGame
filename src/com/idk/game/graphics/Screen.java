@@ -182,8 +182,6 @@ public class Screen
                 if( xa < 0 ) xa = 0;
                 
                 // Check for pink (0xffff00ff). This color indicates transparency.
-                System.out.println( sprite );
-                System.out.println( sprite.pixels );
                 int color = sprite.pixels[ xs + ys * 32 ];               
                 if( color != 0xffff00ff )
                 {
