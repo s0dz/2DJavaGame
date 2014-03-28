@@ -14,6 +14,10 @@ public class Dummy extends Mob
         
     private AnimatedSprite animSprite = down;
     
+    private int time = 0;
+    int xChange = 1;
+    int yChange = 0;
+    
     public Dummy( int x, int y )
     {
         this.x = x << 4;
@@ -22,11 +26,16 @@ public class Dummy extends Mob
         sprite = Sprite.dummy;
     }
     
+    @Override
     public void update()
     {
-        int xChange = 0;
-        int yChange = 0;
-        yChange++;
+        time++;
+        
+        if( time % 60 == 0 )
+        {
+            xChange = -xChange;
+        }
+        
         if ( walking ) animSprite.update();
         else animSprite.setFrame( 0 );
         
