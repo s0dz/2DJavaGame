@@ -32,7 +32,12 @@ public class SpawnLevel extends Level
             System.out.println( "Exception: Could not load level file!" );
             e.printStackTrace();
         }
-        add( new Dummy( 20, 55 ) );
+        
+        // Massive dummy spawn! (lol)
+        for( int i = 0; i < 100; i++ )
+        {
+            add( new Dummy( 20, 55 ) );
+        }
     }
     
     @Override

@@ -15,7 +15,7 @@ public class Dummy extends Mob
     private AnimatedSprite animSprite = down;
     
     private int time = 0;
-    int xChange = 1;
+    int xChange = 0;
     int yChange = 0;
     
     public Dummy( int x, int y )
@@ -31,9 +31,19 @@ public class Dummy extends Mob
     {
         time++;
         
-        if( time % 60 == 0 )
+        // Randomly change direction
+        if( time % ( random.nextInt(50) + 30 ) == 0 )
         {
-            xChange = -xChange;
+            // yChange = -yChange; // Patrol movement
+            xChange = random.nextInt(3) - 1; // Gives back -1, 0, 1
+            yChange = random.nextInt(3) - 1;
+            
+            // Stop everyonce in a while
+            if( random.nextInt(4) == 0 )
+            {
+                xChange = 0;
+                yChange = 0;
+            }
         }
         
         if ( walking ) animSprite.update();
