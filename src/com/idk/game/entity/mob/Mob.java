@@ -1,7 +1,6 @@
 package com.idk.game.entity.mob;
 
 import com.idk.game.entity.Entity;
-import com.idk.game.entity.particle.Particle;
 import com.idk.game.entity.projectile.Projectile;
 import com.idk.game.entity.projectile.TestProjectile;
 import com.idk.game.graphics.Screen;
@@ -47,14 +46,16 @@ public abstract class Mob extends Entity
         }
         else
         {
-            Particle p = new Particle( x, y, 50 );
-            level.add( p );
+            // Want to do anything else besides not move?
+            // Particle p = new Particle( x, y, 50 );
+            // level.add( p );
         }
     }
     
     @Override
     public abstract void update();
     
+    @Override
     public abstract void render( Screen screen );
     
     private boolean collision( int xChange, int yChange )
