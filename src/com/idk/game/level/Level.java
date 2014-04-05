@@ -1,7 +1,6 @@
 package com.idk.game.level;
 
 import com.idk.game.entity.Entity;
-import com.idk.game.entity.spawner.Spawner;
 import com.idk.game.entity.particle.Particle;
 import com.idk.game.entity.projectile.Projectile;
 import com.idk.game.graphics.Screen;

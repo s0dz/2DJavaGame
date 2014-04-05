@@ -2,7 +2,6 @@ package com.idk.game;
 
 import com.idk.game.entity.mob.Player;
 import com.idk.game.graphics.Screen;
-import com.idk.game.graphics.SpriteSheet;
 import com.idk.game.input.Keyboard;
 import com.idk.game.input.Mouse;
 import com.idk.game.level.Level;
